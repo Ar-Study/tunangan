@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segera Hadir | Modern Launch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white overflow-hidden">
+
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[120px]"></div>
+
+    <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
+        
+        <div class="mb-8 animate-bounce">
+            <div class="w-16 h-16 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-blue-500/20">
+                <span class="text-2xl font-bold italic">M</span>
+            </div>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+            Sesuatu yang Besar <br> Sedang Dipersiapkan.
+        </h1>
+        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mb-12">
+            Kami sedang membangun pengalaman digital masa depan. Jadilah yang pertama tahu saat kami meluncur.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 w-full max-w-2xl">
+            <div class="glass p-4 rounded-2xl">
+                <span id="days" class="block text-3xl md:text-4xl font-bold">00</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Hari</span>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <span id="hours" class="block text-3xl md:text-4xl font-bold">00</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Jam</span>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <span id="minutes" class="block text-3xl md:text-4xl font-bold">00</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Menit</span>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <span id="seconds" class="block text-3xl md:text-4xl font-bold">00</span>
+                <span class="text-xs uppercase tracking-widest text-slate-500">Detik</span>
+            </div>
+        </div>
+
+        <form class="flex flex-col md:flex-row gap-3 w-full max-w-md">
+            <input type="email" placeholder="Masukkan email Anda..." 
+                   class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-white">
+            <button type="submit" 
+                    class="bg-white text-slate-900 font-bold px-8 py-4 rounded-xl hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105 active:scale-95">
+                Ingatkan Saya
+            </button>
+        </form>
+
+        <footer class="absolute bottom-10 text-slate-500 text-sm">
+            &copy; 2026 NamaBrand. Hak Cipta Dilindungi.
+        </footer>
+    </main>
+
+    <script>
+        // Set tanggal target (Ganti sesuai kebutuhan)
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 15); // Hitung mundur 15 hari dari sekarang
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
